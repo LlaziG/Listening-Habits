@@ -1,0 +1,6 @@
+{ code: 'MODULE_NOT_FOUND',
+  level: 'error',
+  message: 'Cannot find module \'cors\'Cannot find module \'cors\'',
+  stack:
+   'Error: Cannot find module \'cors\'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:506:25)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\startup\\routes.js:4:14)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)',
+  timestamp: '2019-04-08T20:22:29.041Z' }
