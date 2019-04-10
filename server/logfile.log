@@ -4,3 +4,228 @@
   stack:
    'Error: Cannot find module \'cors\'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:506:25)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\startup\\routes.js:4:14)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)',
   timestamp: '2019-04-08T20:22:29.041Z' }
+{ code: 'MODULE_NOT_FOUND',
+  level: 'error',
+  message:
+   'Cannot find module \'./authorization\'Cannot find module \'./authorization\'',
+  stack:
+   'Error: Cannot find module \'./authorization\'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:506:25)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\index.js:1:85)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)',
+  timestamp: '2019-04-09T13:17:44.151Z' }
+{ level: 'error',
+  message:
+   'Router.use() requires a middleware function but got a undefinedRouter.use() requires a middleware function but got a undefined',
+  stack:
+   'TypeError: Router.use() requires a middleware function but got a undefined\n    at Function.use (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\router\\index.js:458:13)\n    at Function.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\application.js:220:21)\n    at Array.forEach (<anonymous>)\n    at Function.use (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\application.js:217:7)\n    at module.exports (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\startup\\routes.js:9:9)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\index.js:7:28)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)',
+  timestamp: '2019-04-09T13:18:00.024Z' }
+{ code: 'MODULE_NOT_FOUND',
+  level: 'error',
+  message: 'Cannot find module \'fetch\'Cannot find module \'fetch\'',
+  stack:
+   'Error: Cannot find module \'fetch\'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:506:25)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:3:15)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)',
+  timestamp: '2019-04-09T13:20:34.122Z' }
+{ level: 'error',
+  message:
+   'Converting circular structure to JSONConverting circular structure to JSON',
+  stack:
+   'TypeError: Converting circular structure to JSON\n    at JSON.stringify (<anonymous>)\n    at stringify (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:1119:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:260:14)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at router.get.asyncEH (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:18:9)\n    at C:\\Users\\lazar\\Desktop\\React\\Project\\server\\middleware\\asyncEH.js:4:19\n    at Layer.handle [as handle_request] (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at Layer.handle [as handle_request] (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)',
+  timestamp: '2019-04-09T14:26:42.408Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:264:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T14:28:07.764Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T14:28:43.885Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T14:29:16.538Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T14:29:47.188Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T17:32:33.236Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T17:36:05.379Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T17:40:38.465Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:28:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T17:53:12.293Z' }
+{ code: 'MODULE_NOT_FOUND',
+  level: 'error',
+  message:
+   'Cannot find module \'countryCodes\'Cannot find module \'countryCodes\'',
+  stack:
+   'Error: Cannot find module \'countryCodes\'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:506:25)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:4:22)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)',
+  timestamp: '2019-04-09T22:46:45.096Z' }
+{ level: 'error',
+  message:
+   '`country-data` module is deprecated in favor of `country-codes` module at <https://github.com/OpenBookPrices/country-data/>.`country-data` module is deprecated in favor of `country-codes` module at <https://github.com/OpenBookPrices/country-data/>.',
+  stack:
+   'Error: `country-data` module is deprecated in favor of `country-codes` module at <https://github.com/OpenBookPrices/country-data/>.\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\country-codes\\index.js:4:7)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:4:22)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)',
+  timestamp: '2019-04-09T22:47:48.571Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'0\' of undefinedCannot read property \'0\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'0\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\user.js:30:31)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T22:53:04.149Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:44:49.960Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:45:26.702Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:45:32.994Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:47:38.620Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:24:17)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:48:03.750Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:48:12.789Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:24:17)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:48:38.126Z' }
+{ level: 'error',
+  message:
+   'Cannot set headers after they are sent to the clientCannot set headers after they are sent to the client',
+  stack:
+   'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:470:11)\n    at ServerResponse.header (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\node_modules\\express\\lib\\response.js:158:21)\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:24:17)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:48:46.490Z' }
+{ level: 'error',
+  message: 'ReadableStream is not definedReadableStream is not defined',
+  stack:
+   'ReferenceError: ReadableStream is not defined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:19:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:56:16.377Z' }
+{ level: 'error',
+  message: 'ReadableStream is not definedReadableStream is not defined',
+  stack:
+   'ReferenceError: ReadableStream is not defined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:19:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:56:50.529Z' }
+{ level: 'error',
+  message: 'ReadableStream is not definedReadableStream is not defined',
+  stack:
+   'ReferenceError: ReadableStream is not defined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:19:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:57:33.278Z' }
+{ level: 'error',
+  message: 'ReadableStream is not definedReadableStream is not defined',
+  stack:
+   'ReferenceError: ReadableStream is not defined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:19:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:57:40.944Z' }
+{ level: 'error',
+  message: 'Unexpected identifierUnexpected identifier',
+  stack:
+   'C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:19\n            res.send(json)l\n                          ^\n\nSyntaxError: Unexpected identifier\n    at new Script (vm.js:79:7)\n    at createScript (vm.js:251:10)\n    at Object.runInThisContext (vm.js:303:10)\n    at Module._compile (internal/modules/cjs/loader.js:656:28)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:529:3)\n    at Module.require (internal/modules/cjs/loader.js:636:17)\n    at require (internal/modules/cjs/helpers.js:20:18)',
+  timestamp: '2019-04-09T23:58:11.510Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:58:16.929Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:58:20.509Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\playlist.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-09T23:58:44.398Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:32:54.278Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:33:11.571Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:33:21.270Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:38:22.821Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:38:39.346Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:20:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:39:16.013Z' }
+{ level: 'error',
+  message:
+   'Cannot read property \'items\' of undefinedCannot read property \'items\' of undefined',
+  stack:
+   'TypeError: Cannot read property \'items\' of undefined\n    at fetch.then.then.json (C:\\Users\\lazar\\Desktop\\React\\Project\\server\\routes\\search.js:21:28)\n    at process._tickCallback (internal/process/next_tick.js:68:7)',
+  timestamp: '2019-04-10T00:39:29.529Z' }
