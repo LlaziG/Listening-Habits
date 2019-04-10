@@ -9,7 +9,7 @@ const { asyncEH } = require('../middleware/index');
 router.get('/authorize', asyncEH(async (req, res) => {
     const scopes = 'user-read-private user-read-email user-top-read';
     const client_id = 'a1930b0b80cc46b687e3aee3f8593b84';
-    const redirect_uri = 'http://localhost:3005/dashboard';
+    const redirect_uri = 'http://localhost:3005/dashboard/';
 
     res.redirect(`https://accounts.spotify.com/authorize?response_type=token&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}`);
 
@@ -21,16 +21,20 @@ router.get('/profile', asyncEH(async (req, res) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${req.body.token}`
+            'Authorization': `Bearer ${req.headers.spotify_auth}`
         },
     })
         .then(data => data.json())
-        .then(json => res.send({
-            name: json.display_name,
-            image: json.images[0].url,
-            code: json.country,
-            country: getName(json.country)
-        }));
+        .then(json => {
+            if (json.display_name) res.send({
+                name: json.display_name,
+                image: json.images[0].url,
+                type: json.product,
+                code: json.country,
+                country: getName(json.country)
+            })
+            else { res.send({ error: "token_expired" }) }
+        });
 }));
 
 router.get('/artists/:time_range', asyncEH(async (req, res) => {
@@ -39,13 +43,13 @@ router.get('/artists/:time_range', asyncEH(async (req, res) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${req.body.token}`
+            'Authorization': `Bearer ${req.headers.spotify_auth}`
         },
     })
         .then(data => data.json())
         .then(json => {
             let artists = new Array();
-            json.forEach(el => {
+            json.items.forEach(el => {
                 artists.push({
                     url: el.external_urls.spotify,
                     genre: el.genres.slice(0, 2).join(", "),
@@ -55,7 +59,7 @@ router.get('/artists/:time_range', asyncEH(async (req, res) => {
                     popularity:
                         el.popularity < 50
                             ? 1
-                            : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 2 + Math.round((el.popularity - 51) / 10)
+                            : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 1 + Math.round((el.popularity - 51) / 10)
                     // Gives 1-5 rating: 0- 50; 51- 65; 66- 75; 76- 85; 86- 100
                 });
             });
@@ -69,7 +73,7 @@ router.get('/tracks/:time_range', asyncEH(async (req, res) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${req.body.token}`
+            'Authorization': `Bearer ${req.headers.spotify_auth}`
         },
     })
         .then(data => data.json())

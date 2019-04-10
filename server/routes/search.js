@@ -11,7 +11,7 @@ router.get('/playlists/:limit/:query', asyncEH(async (req, res) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${req.body.token}`
+            'Authorization': `Bearer ${req.headers.spotify_auth}`
         },
     })
         .then(data => data.json())

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400');
+@font-face {
+    font-family: 'FoundersGroteskRegular';
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Regular.eot');
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Regular.eot?#iefix') format('embedded-opentype'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Regular.woff2') format('woff2'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'FoundersGroteskMedium';
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Medium.eot');
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Medium.eot?#iefix') format('embedded-opentype'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Medium.woff2') format('woff2'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'FoundersGroteskLight';
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Light.eot');
+    src: url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Light.eot?#iefix') format('embedded-opentype'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Light.woff2') format('woff2'), url('./fonts/FoundersGrotesk/FoundersGroteskWeb-Light.woff') format('woff');
+}
+
+#loginPage {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), black), url("./images/turntable-1109588_1920.jpg") no-repeat;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#loginPageContent {
+    margin: 20% auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+}
+
+#root {
+    background: #1A1B1D;
+    width: 100%;
+    min-height: 100%;
+}
+
+.profile {
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+}
+
+#profileImage, #profileText {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#profileText {
+    margin-left: 3em;
+}
+
+.favourites {
+    text-align: center;
+}
+#favourites {
+    text-align: left;
+}

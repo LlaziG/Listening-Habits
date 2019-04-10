@@ -1,0 +1,42 @@
+.listing *, .listing *:after, .listing *:before {
+  box-sizing: border-box;
+}
+
+.listing {
+  width: 240px;
+  height: 360px;
+  margin-right: 20px;
+  background: #282828;
+  color: #fefefe;
+}
+
+.listing:last-child {
+  margin: 0;
+}
+
+.label {
+  display: flex;
+  height: 120px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+
+.label p {
+  margin: 0;
+}
+
+.label .name, .label .subname {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.label .subname {
+  opacity: 0.6;
+}
+
+.footer, .footer *, .footer *:visited, .footer *:active, .footer *:hover {
+  color: #7f7f7f!important;
+  text-transform: uppercase;
+  text-decoration: none;
+}
