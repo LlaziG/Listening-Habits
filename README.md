@@ -6,12 +6,12 @@ React + Express app. Build with Spotify API. The app would give you insights som
 
 ### Express Endpoints
 
-|Endpoint|Description|Parameters|Body|
-|-|-|-|-|
-|`/api/user/authorize`|Authorizes user. They will be redirected after as successful authorization.|||
-|`/api/user/profile`|Returns generic information about the authenticated user.||{token : given_token}|
-|`/api/user/artists/:time_range`|Returns user's favorite artists for the given time range.|time_range : `short_term/ medium_term/ long_term`|{token : given_token}|
-|`/api/user/tracks/:time_range`|Returns user's favorite tracks for the given time range.|time_range : `short_term/ medium_term/ long_term`|{token : given_token}|
-|`/api/tracks/features/:ids`|Returns mood features for the given song `ids` (comma separated) |ids: `spotify track ids (comma separated)`|{token : given_token}|
-|`/api/search/playlists/:l/:q`|Searches Spotify for playlists and returns playlist ids|l: `items limit(0 will be set to 10)` q: `search query`|{token : given_token}|
-|`/api/playlist/:id/tracks`|Returns all the tracks in a the given Spotify playlist|id: `playlist id`|{token : given_token}|
+|Type|Endpoint|Description|Parameters|Headers|
+|-|-|-|-|-|
+|GET|`/api/user/authorize`|Authorizes user. They will be redirected after as successful authorization.|||
+|GET|`/api/user/profile`|Returns generic information about the authenticated user.||{spotify_auth : given_token}|
+|GET|`/api/user/artists/:time_range`|Returns user's favorite artists for the given time range.|time_range : `short_term/ medium_term/ long_term`|{spotify_auth : given_token}|
+|GET|`/api/user/tracks/:time_range`|Returns user's favorite tracks for the given time range.|time_range : `short_term/ medium_term/ long_term`|{spotify_auth : given_token}|
+|GET|`/api/tracks/features/:ids`|Returns mood features for the given song `ids` (comma separated) |ids: `spotify track ids (comma separated)`|{spotify_auth : given_token}|
+|GET|`/api/search/playlists/:l/:q`|Searches Spotify for playlists and returns playlist ids|l: `items limit(0 will be set to 10)` q: `search query`|{spotify_auth : given_token}|
+|GET|`/api/playlist/:id/tracks`|Returns all the tracks in a the given Spotify playlist|id: `playlist id`|{spotify_auth : given_token}|
