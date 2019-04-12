@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import { LoginButton } from './buttons/index';
 import { ArtisticListing } from './listings/index';
-import { HeadingText } from './headings/index';
+import { HeadingOne, HeadingTwo, HeadingThree } from './headings/index';
 import { Thumbnail } from './images/index';
+import { ListingCarousel, ListingCarouselStateFull } from './carousels';
 
 import Cookies from 'universal-cookie';
+import request from 'request-promise-native';
 
 import * as serviceWorker from './serviceWorker';
 
 
-function login() {
+async function login() {
     const cookies = new Cookies();
     console.log(cookies.get("token"));
     let hashParams = window.location.hash.substr(1).split("&")
@@ -33,56 +35,144 @@ function login() {
             />,
             document.getElementById('loginPageContent'));
     } else {
-        fetch('//localhost:3001/api/user/profile', {
+        await fetch_retry({
+            url: 'http://localhost:3001/api/user/profile',
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
                 'spotify_auth': `${cookies.get('token')}`
             }
-        }).then(response => response.json())
-            .then(data => {
+        }, 5)
+            .then(async data => {
                 if (data.error) {
                     cookies.remove("token");
                     window.location = "//" + window.location.host + window.location.pathname;
-                    console.log(data.error);
                 }
                 else {
                     //Do something
-                    console.log(data);
+                    let dataAPI = new Object();
                     document.getElementById('loginPage').remove();
                     renderProfileSection(data);
-                    renderFavoriteSection(data);
-
+                    await Promise.all([
+                        fetch_retry({
+                            url: 'http://localhost:3001/api/user/artists/short_term',
+                            method: 'get',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'spotify_auth': `${cookies.get('token')}`
+                            }
+                        }, 5),
+                        fetch_retry({
+                            url: 'http://localhost:3001/api/user/artists/long_term',
+                            method: 'get',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'spotify_auth': `${cookies.get('token')}`
+                            }
+                        }, 5)
+                    ])
+                        .then(data => {
+                            data.map(x => {
+                                if (x.error) throw new Error(x.error);
+                            });
+                            return data;
+                        }).then(data => {
+                            dataAPI.artists = data;
+                        })
+                        .catch(error => console.log(error))
+                    await Promise.all([
+                        fetch_retry({
+                            url: 'http://localhost:3001/api/user/tracks/short_term',
+                            method: 'get',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'spotify_auth': `${cookies.get('token')}`
+                            }
+                        }, 5),
+                        fetch_retry({
+                            url: 'http://localhost:3001/api/user/tracks/long_term',
+                            method: 'get',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'spotify_auth': `${cookies.get('token')}`
+                            }
+                        }, 5)
+                    ])
+                        .then(data => {
+                            data.map(x => {
+                                if (x.error) throw new Error(x.error);
+                            });
+                            return data;
+                        }).then(data => {
+                            dataAPI.tracks = data;
+                            renderFavoriteSection(dataAPI);
+                        })
+                        .catch(error => console.log(error))
                 }
             })
 
 
     }
 }
+let dataAPI = new Object();
 login();
 
 function renderProfileSection(data) {
     ReactDOM.render(
         < Thumbnail
+            borderRadius="50% 0 50% 50%"
             img={data.image}
+            alt={data.name}
         />,
         document.getElementById('profileImage'));
     ReactDOM.render(
         <div>
-            <HeadingText className="Welcome" text={"Hi " + data.name + ", "} color="rgba(30, 215, 96, 0.44)" fontSize="25px" />
-            <HeadingText className="Welcome" text={"Check out your stats below"} color="rgba(254, 254, 254, 0.8)" fontSize="60px" margin="-10px 0" />
-            <HeadingText className="Welcome" text={data.type} color="rgba(254, 254, 254, 0.2)" fontSize="37px"
-                textTransform="uppercase" letterSpacing="-1px" opacity="0.8" /></div>,
+            <HeadingTwo text={"Hi " + data.name + ", "} />
+            <HeadingOne text={"Check out your stats below"} />
+            <HeadingThree text={data.type} /></div>,
         document.getElementById('profileText'));
 }
+
 function renderFavoriteSection(data) {
+    let carousels = new Array();
+    let itemsArtists = data.artists.map(x => x.artists.map(artist => createArtisticListingElement(artist, "Artist Radio")));
+    let itemsTracks = data.tracks.map(x => x.tracks.map(track => createArtisticListingElement(track, "Track Radio")));
+
+    for (let i in data.artists) carousels.push(createCarouselElement(itemsArtists[i], "Artists"));
+    for (let i in data.tracks) carousels.push(createCarouselElement(itemsTracks[i], "Tracks"));
+
     ReactDOM.render(
-        <ArtisticListing
-            name="Eminem"
-            nameSecondary="★★★★★"
-            subname="detroit hip hop / rap"
-            footer={<a target='blank' href='https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR'>Artist Radio</a>}
-            img="https://i.scdn.co/image/60c4daa4721f666c6afaee82a39bd413979a0474"
-        />, document.getElementById('favourites'));
+        <ListingCarouselStateFull
+            elements={carousels}
+        />
+        , document.getElementById('favourites'));
 }
+function createArtisticListingElement(data, text) {
+    return <ArtisticListing
+        key={Math.random().toString(36).substring(5)}
+        alt={data.name}
+        name={data.name}
+        nameSecondary={"★".repeat(data.popularity)}
+        subname={data.subheading}
+        footer={<a target='blank' href={data.url}>{text}</a>}
+        img={data.image.url}
+    />
+
+}
+function createCarouselElement(data, text) {
+    return <div key={Math.random().toString(36).substring(5)} className="CarouselWrapper">
+        <HeadingTwo text={"Current Favourite " + text} margin="25px 5%" />
+        <ListingCarousel elements={<div>{data}</div>} />
+    </div >
+}
+async function fetch_retry(options, n) {
+    return await request(options)
+        .then(response => {
+            return JSON.parse(response);
+        })
+        .catch(async (err) => {
+            if (n === 1) throw err;
+            return await fetch_retry(options, n - 1);
+        });
+};
 serviceWorker.unregister();

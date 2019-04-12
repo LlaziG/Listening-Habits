@@ -1,0 +1,14 @@
+.HeadingFour {
+    color: rgba(254, 254, 254, 0.6);
+    font-size: 37px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    opacity: 0.7;
+    margin: -10px 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.Switches {
+    text-align: center;
+}

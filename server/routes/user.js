@@ -48,22 +48,28 @@ router.get('/artists/:time_range', asyncEH(async (req, res) => {
     })
         .then(data => data.json())
         .then(json => {
-            let artists = new Array();
-            json.items.forEach(el => {
-                artists.push({
-                    url: el.external_urls.spotify,
-                    genre: el.genres.slice(0, 2).join(", "),
-                    genres: el.genres,
-                    image: el.images[0],
-                    name: el.name,
-                    popularity:
-                        el.popularity < 50
-                            ? 1
-                            : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 1 + Math.round((el.popularity - 51) / 10)
-                    // Gives 1-5 rating: 0- 50; 51- 65; 66- 75; 76- 85; 86- 100
+            if (json.items) {
+                let artists = new Array();
+                json.items.forEach(el => {
+                    artists.push({
+                        id : el.id,
+                        url: el.external_urls.spotify,
+                        subheading: el.genres.slice(0, 2).join("/ "),
+                        genres: el.genres,
+                        image: el.images[0],
+                        name: el.name,
+                        popularity:
+                            el.popularity < 50
+                                ? 1
+                                : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 1 + Math.round((el.popularity - 51) / 10)
+                        // Gives 1-5 rating: 0- 50; 51- 65; 66- 75; 76- 85; 86- 100
+                    });
                 });
-            });
-            res.send({ artists: artists })
+                res.send({ artists: artists })
+            }
+            else { res.send({ error: "token_expired" }) }
+        }).catch(e => {
+            res.status(500).send(e);
         });
 }));
 
@@ -78,25 +84,30 @@ router.get('/tracks/:time_range', asyncEH(async (req, res) => {
     })
         .then(data => data.json())
         .then(json => {
-            let tracks = new Array();
-            json.forEach(el => {
-                tracks.push({
-                    id: el.id,
-                    url: el.external_urls.spotify,
-                    genre: el.genres.slice(0, 2).join(", "),
-                    genres: el.genres,
-                    image: el.album.images[0],
-                    artist: el.artists[0].name,
-                    album: el.album.name.toLowerCase(),
-                    name: el.name,
-                    popularity:
-                        el.popularity < 50
-                            ? 1
-                            : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 2 + Math.round((el.popularity - 51) / 10)
-                    // Gives 1-5 rating: 0- 50; 51- 65; 66- 75; 76- 85; 86- 100
+            if (json.items) {
+                let tracks = new Array();
+                json.items.forEach(el => {
+                    tracks.push({
+                        id: el.id,
+                        url: el.external_urls.spotify,
+                        subheading: el.album.name + "/ " + el.artists[0].name,
+                        image: el.album.images[0],
+                        artist: el.artists[0].name,
+                        album: el.album.name,
+                        name: el.name,
+                        popularity:
+                            el.popularity < 50
+                                ? 1
+                                : Math.floor((el.popularity - 50) / 50) - Math.floor((el.popularity / 100)) + 2 + Math.round((el.popularity - 51) / 10)
+                        // Gives 1-5 rating: 0- 50; 51- 65; 66- 75; 76- 85; 86- 100
+                    });
                 });
-            });
-            res.send({ artists: artists })
+                res.send({ tracks: tracks })
+            }
+            else { res.send({ error: "token_expired" }) }
+        })
+        .catch(e => {
+            res.status(500).send(e);
         });
 }));
 

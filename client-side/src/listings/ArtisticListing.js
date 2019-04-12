@@ -8,17 +8,15 @@ class ArtisticListing extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="listing">
-                    <Thumbnail img={this.props.img} />
-                    <div className="label">
-                        <p>
-                            <span className='name'>{this.props.name} {this.props.nameSecondary && "-"} <span>{this.props.nameSecondary}</span></span>
-                            <span className='subname'>{this.props.subname}</span>
-                        </p>
+            <div className="listing">
+                <Thumbnail img={this.props.img} alt={this.props.alt} />
+                <div className="label">
+                    <p>
+                        <span className='name'>{this.props.name} {this.props.nameSecondary && "-"} <span>{this.props.nameSecondary}</span></span>
+                        <span className='subname'>{this.props.subname}</span>
+                    </p>
 
-                        <p className="footer">{this.props.footer}</p>
-                    </div>
+                    <p className="footer">{this.props.footer}</p>
                 </div>
             </div>
         );

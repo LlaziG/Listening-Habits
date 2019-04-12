@@ -1,0 +1,8 @@
+.HeadingThree {
+    color: rgba(254, 254, 254, 0.2);
+    font-size: 37px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    opacity: 0.8;
+    margin: -10px 0;
+}
