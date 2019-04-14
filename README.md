@@ -15,3 +15,12 @@ React + Express app. Build with Spotify API. The app would give you insights som
 |GET|`/api/tracks/features/:ids`|Returns mood features for the given song `ids` (comma separated) |ids: `spotify track ids (comma separated)`|{spotify_auth : given_token}|
 |GET|`/api/search/playlists/:l/:q`|Searches Spotify for playlists and returns playlist ids|l: `items limit(0 will be set to 10)` q: `search query`|{spotify_auth : given_token}|
 |GET|`/api/playlist/:id/tracks`|Returns all the tracks in a the given Spotify playlist|id: `playlist id`|{spotify_auth : given_token}|
+
+### Running App
+
+1. redirect to the `client-side` folder
+2. `export PORT=3005`
+3. `npm start`
+
+4. redirect to the `server` folder
+5. `node index.js`
