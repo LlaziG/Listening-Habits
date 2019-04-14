@@ -6,7 +6,6 @@ class HeadingFour extends Component {
         super(props);
         this.style = {
             margin: this.props.margin || "inherit",
-            textDecoration : !this.props.active && "line-through",
             opacity : !this.props.active && 1
         }
     }

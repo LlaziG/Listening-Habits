@@ -28,7 +28,7 @@
 
 #loginPageContent {
     margin: 20% auto;
-    position: relative;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     display: inline-block;
@@ -40,7 +40,7 @@
     min-height: 100%;
 }
 
-.profile {
+#profile {
     text-align: center;
     margin: auto;
     padding: 50px;
@@ -56,9 +56,10 @@
     margin-left: 3em;
 }
 
-.favourites {
+#favourites {
     text-align: center;
 }
-#favourites {
+
+#favourites>div {
     text-align: left;
 }

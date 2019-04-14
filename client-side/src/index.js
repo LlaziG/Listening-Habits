@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { LoginButton } from './buttons/index';
 import { ArtisticListing } from './listings/index';
 import { HeadingOne, HeadingTwo, HeadingThree } from './headings/index';
@@ -16,15 +15,16 @@ import * as serviceWorker from './serviceWorker';
 
 async function login() {
     const cookies = new Cookies();
-    console.log(cookies.get("token"));
     let hashParams = window.location.hash.substr(1).split("&")
         .map(v => v.split("="))
         .reduce((pre, [key, value]) => ({ ...pre, [key]: value }), {});
 
     if (hashParams.access_token) {
+        // If access_token exists (meaning we just got redirected from Spotify)
         cookies.set('token', hashParams.access_token, { path: '/', maxAge: hashParams.expires_in });
         window.location = "//" + window.location.host + window.location.pathname;
     } else if (cookies.get("token") === undefined || cookies.get("token") === null) {
+        // Token is not set or is expired
         document.getElementById('root').remove();
         ReactDOM.render(
             < LoginButton
@@ -35,6 +35,7 @@ async function login() {
             />,
             document.getElementById('loginPageContent'));
     } else {
+        // Token is valid
         await fetch_retry({
             url: 'http://localhost:3001/api/user/profile',
             method: 'get',
@@ -45,14 +46,13 @@ async function login() {
         }, 5)
             .then(async data => {
                 if (data.error) {
+                    // An error of that type can only be {auth_token_expired} 
                     cookies.remove("token");
                     window.location = "//" + window.location.host + window.location.pathname;
                 }
                 else {
-                    //Do something
-                    let dataAPI = new Object();
                     document.getElementById('loginPage').remove();
-                    renderProfileSection(data);
+                    renderQueue.push(constructProfileSection(data));
                     await Promise.all([
                         fetch_retry({
                             url: 'http://localhost:3001/api/user/artists/short_term',
@@ -69,18 +69,7 @@ async function login() {
                                 'Content-Type': 'application/json',
                                 'spotify_auth': `${cookies.get('token')}`
                             }
-                        }, 5)
-                    ])
-                        .then(data => {
-                            data.map(x => {
-                                if (x.error) throw new Error(x.error);
-                            });
-                            return data;
-                        }).then(data => {
-                            dataAPI.artists = data;
-                        })
-                        .catch(error => console.log(error))
-                    await Promise.all([
+                        }, 5),
                         fetch_retry({
                             url: 'http://localhost:3001/api/user/tracks/short_term',
                             method: 'get',
@@ -104,52 +93,58 @@ async function login() {
                             });
                             return data;
                         }).then(data => {
-                            dataAPI.tracks = data;
-                            renderFavoriteSection(dataAPI);
+                            renderQueue.push(constructFavoriteSection({ artists: data.slice(0, 2), tracks: data.slice(2) }));
+                            return renderQueue;
+                        })
+                        .then(renderQueue => {
+                            ReactDOM.render(<React.Fragment>{renderQueue}</React.Fragment>, document.getElementById('root'));
+                            renderQueue = [];
                         })
                         .catch(error => console.log(error))
                 }
             })
-
-
     }
 }
-let dataAPI = new Object();
+let renderQueue = [];
 login();
 
-function renderProfileSection(data) {
-    ReactDOM.render(
-        < Thumbnail
-            borderRadius="50% 0 50% 50%"
-            img={data.image}
-            alt={data.name}
-        />,
-        document.getElementById('profileImage'));
-    ReactDOM.render(
-        <div>
+function constructProfileSection(data) {
+    return <div id="profile" key={randomKey()}>
+        <div id="profileImage">
+            < Thumbnail
+                borderRadius="50% 0 50% 50%"
+                img={data.image}
+                alt={data.name}
+            />
+        </div>
+        <div id="profileText">
             <HeadingTwo text={"Hi " + data.name + ", "} />
             <HeadingOne text={"Check out your stats below"} />
-            <HeadingThree text={data.type} /></div>,
-        document.getElementById('profileText'));
+            <HeadingThree text={data.type} />
+        </div>
+    </div>
 }
 
-function renderFavoriteSection(data) {
-    let carousels = new Array();
+function constructFavoriteSection(data) {
+    let carousels = [];
     let itemsArtists = data.artists.map(x => x.artists.map(artist => createArtisticListingElement(artist, "Artist Radio")));
     let itemsTracks = data.tracks.map(x => x.tracks.map(track => createArtisticListingElement(track, "Track Radio")));
+    let artistCarousels = [];
+    let tracksCarousels = [];
 
-    for (let i in data.artists) carousels.push(createCarouselElement(itemsArtists[i], "Artists"));
-    for (let i in data.tracks) carousels.push(createCarouselElement(itemsTracks[i], "Tracks"));
+    for (let i in data.artists) artistCarousels.push(createCarouselElement(itemsArtists[i], i === 0 ? "Current Favourite Artists" : "All-time Favourite Artists"));
+    for (let i in data.tracks) tracksCarousels.push(createCarouselElement(itemsTracks[i], i === 0 ? "Current Favourite Tracks" : "All-time Favourite Tracks"));
+    carousels.push({ button: "My Artists", element: artistCarousels });
+    carousels.push({ button: "My Tracks", element: tracksCarousels });
 
-    ReactDOM.render(
+    return <div id="favourites" key={randomKey()}>
         <ListingCarouselStateFull
             elements={carousels}
-        />
-        , document.getElementById('favourites'));
+        /></div>
 }
 function createArtisticListingElement(data, text) {
     return <ArtisticListing
-        key={Math.random().toString(36).substring(5)}
+        key={randomKey()}
         alt={data.name}
         name={data.name}
         nameSecondary={"★".repeat(data.popularity)}
@@ -157,13 +152,16 @@ function createArtisticListingElement(data, text) {
         footer={<a target='blank' href={data.url}>{text}</a>}
         img={data.image.url}
     />
-
 }
+
 function createCarouselElement(data, text) {
-    return <div key={Math.random().toString(36).substring(5)} className="CarouselWrapper">
-        <HeadingTwo text={"Current Favourite " + text} margin="25px 5%" />
-        <ListingCarousel elements={<div>{data}</div>} />
+    return <div key={randomKey()} className="CarouselWrapper">
+        <HeadingTwo text={text} margin="25px 5%" />
+        <ListingCarousel elements={<React.Fragment>{data}</React.Fragment>} />
     </div >
+}
+function randomKey(n = 5) {
+    return Math.random().toString(36).substring(n);
 }
 async function fetch_retry(options, n) {
     return await request(options)
@@ -175,4 +173,5 @@ async function fetch_retry(options, n) {
             return await fetch_retry(options, n - 1);
         });
 };
+
 serviceWorker.unregister();

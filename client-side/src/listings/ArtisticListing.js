@@ -3,9 +3,6 @@ import { Thumbnail } from '../images/index';
 import './ArtisticListing.css';
 
 class ArtisticListing extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="listing">

@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import './ListingCarousel.css';
 import './ListingCarouselStateFull.css';
-import { RefWrapper } from '../helpers/index';
 import { HeadingFour } from '../headings/index';
-import { ListingCarousel } from '../carousels/index'
+import { ButtonHeading } from '../buttons/index';
 
 class ListingCarouselStateFull extends Component {
     constructor(props) {
         super(props);
+        this.state = { activeIndex: 0 }
+        this.indexSwitch = this.indexSwitch.bind(this);
+    }
+    indexSwitch(index) {
+        this.setState(state => {
+            return { activeIndex: index }
+        });
     }
     componentDidMount() {
     }
@@ -16,15 +22,35 @@ class ListingCarouselStateFull extends Component {
         return (
             <div>
                 <div className="Switches">
-                    <HeadingFour text="My Artists" active={false}/>
-
-                    <HeadingFour text=" / " margin="15px" active={true}/>
-
-                    <HeadingFour text="My Tracks" active={true}/>
+                    {this.props.elements.map((el, index) => {
+                        if (index < this.props.elements.length - 1) {
+                            return <React.Fragment key={index} >
+                                <span onClick={(e) => this.indexSwitch(index)}>
+                                    <ButtonHeading key={"button-" + index} text={el.button} active={this.state.activeIndex === index} /></span>
+                                <HeadingFour key={"separator-" + index} text=" / " margin="15px" />
+                            </React.Fragment>
+                        }
+                        else {
+                            return <React.Fragment key={index} >
+                                <span onClick={(e) => this.indexSwitch(index)}>
+                                    <ButtonHeading key={"button-" + index} text={el.button} active={this.state.activeIndex === index} />
+                                </span>
+                            </React.Fragment>
+                        }
+                    })}
                 </div>
 
                 <div className="Carousels">
-                    {this.props.elements}
+                    {this.props.elements.map((el, index) => {
+                        if (index === this.state.activeIndex) {
+                            return <React.Fragment key={"carousel-" + index}>
+                                {el.element}
+                            </React.Fragment>
+                        }
+                        // else {
+                        //     return null
+                        // }
+                    })}
                 </div>
             </div>
         );

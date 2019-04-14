@@ -1,4 +1,4 @@
-.HeadingFour {
+.ButtonHeading {
     color: rgba(254, 254, 254, 0.6);
     font-size: 37px;
     text-transform: uppercase;
@@ -6,8 +6,15 @@
     opacity: 0.7;
     margin: -10px 0;
     display: inline-block;
+    cursor: pointer;
+    text-decoration: line-through;
 }
 
 .Switches {
     text-align: center;
+}
+
+.active {
+    text-decoration: none;
+    opacity: 1;
 }
