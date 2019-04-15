@@ -19,8 +19,10 @@ React + Express app. Build with Spotify API. The app would give you insights som
 ### Running App
 
 1. redirect to the `client-side` folder
-2. `export PORT=3005`
-3. `npm start`
-
-4. redirect to the `server` folder
-5. `node index.js`
+2. `npm install`
+3. `export PORT=3005`
+4. `npm start`
+<br/><br/>
+5. redirect to the `server` folder
+6. `npm install`
+7. `node index.js`
