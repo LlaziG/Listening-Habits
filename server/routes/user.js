@@ -28,7 +28,7 @@ router.get('/profile', asyncEH(async (req, res) => {
         .then(json => {
             if (json.display_name) res.send({
                 name: json.display_name,
-                image: json.images[0].url,
+                image: json.images[0].url || "https://www.joniandfriends.org/wp-content/uploads/2019/07/spotify-logo.png",
                 type: json.product,
                 code: json.country,
                 country: getName(json.country)
